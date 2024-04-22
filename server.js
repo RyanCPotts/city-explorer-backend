@@ -20,6 +20,14 @@ app.get('/', (request, response) => {
   response.send('<h1>This is some html!</h1>');
 });
 
+class Forecast{
+    constructor(weatherData){
+        this.date = weatherData.datetime;
+        this.description = weatherData.weather.description;
+    }
+}
+
+
 app.get('/weather', getWeather)
 
 async function getWeather(request, response){
@@ -32,7 +40,10 @@ async function getWeather(request, response){
 
     if(findWeather){
         // response.status(200).json(findWeather)
-        console.log(findWeather)
+        // console.log(findWeather);
+        // console.log(findWeather.data[0].weather);
+        const forecastArray = findWeather.data.map((weatherDate) => new Forecast(weatherDate));
+        response.status(200).json(forecastArray);
     }
 }   catch(e){
     console.error(e.message)
