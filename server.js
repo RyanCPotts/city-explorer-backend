@@ -8,6 +8,7 @@ const axios = require('axios');
 const express = require('express');
 const cors = require('cors');
 const getWeather = require('./modules/weather.js')
+const getMovies = require('./modules/movies.js')
 const app = express();
 
 // Allow any client to make requests to this server
@@ -21,6 +22,7 @@ app.get('/', (request, response) => {
 });
 
 app.get('/weather', getWeather)
+app.get('/movies', getMovies)
 
 function startServer() {
     let PORT = process.env.port || 3000;
