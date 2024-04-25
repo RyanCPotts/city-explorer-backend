@@ -7,7 +7,7 @@ class Movie {
     constructor(moviesData) {
       this.title = moviesData.title;
       this.overview = moviesData.overview;
-      this.release_date = moviesData.releast_date;
+      this.release_date = moviesData.release_date;
       this.poster_path = moviesData.poster_path;
     }
   }
